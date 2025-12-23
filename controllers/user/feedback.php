@@ -28,6 +28,7 @@ if(isset($_POST['sendBtn'])) {
             [
                 $_SESSION['temp']['result'][0],
                 $_SESSION['temp']['result'][1],
+                $_SESSION['temp']['result'][2],
                 $_POST['point'],
                 $_POST['content'],
                 date('H:i:s d/m/Y')
