@@ -48,5 +48,7 @@ if(isset($_POST['sendBtn'])) {
 }
 
 # [VIEW]
+// Nếu đã đánh giá -> Xem trang Cảm ơn
 if(isset($_SESSION['bool_feedback'])) view('user','Kết quả đánh giá','result_feedback',null);
+
 view('user','Đánh giá dịch vụ','feedback',null);

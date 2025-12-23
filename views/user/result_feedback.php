@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column align-items-center justify-content-center p-3">
-    <div class="col-12 col-md-6 col-lg-5 bg-dark bg-opacity-50 text-light rounded-3 py-5 px-3 px-lg-5 text-center">
+    <div class="col-12 col-md-6 col-lg-5 bg-dark bg-opacity-75 text-light rounded-3 py-5 px-3 px-lg-5 text-center">
         <div class="h4 text-main text-uppercase mb-3">
             Đánh giá thành công
         </div>
