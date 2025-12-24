@@ -13,7 +13,7 @@
                 Vị trí bàn
             </div>
             <div class="fw-info fs-4 text-capitalize">
-                bên <?= $_SESSION['temp']['result'][1] ?>
+                <?= $_SESSION['temp']['result'][1] ?>
             </div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
