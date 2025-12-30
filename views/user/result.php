@@ -4,24 +4,32 @@
             <div class="fw-bold">
                 Tên đại lý
             </div>
-            <div class="fw-info fs-4 text-capitalize">
+            <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
                 <?= $_SESSION['temp']['result'][0] ?>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
+            <div class="fw-bold">
+                Tên KH
+            </div>
+            <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
+                <?= $_SESSION['temp']['result'][2] ?>
             </div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
             <div class="fw-bold">
                 Vị trí bàn
             </div>
-            <div class="fw-info fs-4 text-capitalize">
-                <?= $_SESSION['temp']['result'][1] ?>
+            <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
+                <?= $_SESSION['temp']['result'][3] ?>
             </div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
             <div class="fw-bold">
                 Số bàn
             </div>
-            <div class="fw-info fs-4 text-capitalize">
-                <?= ($_SESSION['temp']['result'][2]<10)?'0':''?><?= $_SESSION['temp']['result'][2] ?>
+            <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
+                <?= $_SESSION['temp']['result'][4] ?>
             </div>
         </div>
     </div>

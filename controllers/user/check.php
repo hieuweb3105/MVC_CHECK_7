@@ -12,21 +12,27 @@ $service = new Google_Service_Sheets($client);
 
 # [VARIABLE]
 
-$input_key = '';
+$name_agency = '';
+$name_customer = '';
 
 # [HANDLE]
 
-// get input
-if(isset($_POST['input_key']) && $_POST['input_key']) $input_key = $_POST['input_key'];
-
-// toast error
+// get input name agency
+if(isset($_POST['name_agency']) && $_POST['name_agency']) $name_agency = $_POST['name_agency'];
 else {
     toast_create('danger','Vui lòng nhập Tên Đại Lý của bạn');
     route();
 }
+// get input name customer
+if(isset($_POST['name_customer']) && $_POST['name_customer']) $name_customer = $_POST['name_customer'];
+else {
+    toast_create('danger','Vui lòng nhập Tên KH của bạn');
+    route();
+}
 
 // save input
-$_SESSION['temp']['input'] = $input_key;
+$_SESSION['temp']['name_agency'] = $name_agency;
+$_SESSION['temp']['name_customer'] = $name_customer;
 
 // condition call API : null data OR time query < duration time
 if(empty($_SESSION['data']) || (time() - $_SESSION['temp']['time']) > REQUEST_API_TIME) {
@@ -34,7 +40,7 @@ if(empty($_SESSION['data']) || (time() - $_SESSION['temp']['time']) > REQUEST_AP
     // call API get data from GG Sheet
     try {
         // query get
-        $response = $service->spreadsheets_values->get(SHEET_ID, 'Info!A3:C');
+        $response = $service->spreadsheets_values->get(SHEET_ID, 'Info!A3:E');
         
         // get values
         $_SESSION['data'] = $response->getValues(); 
@@ -64,7 +70,7 @@ foreach ($_SESSION['data'] as $row) {
     $_SESSION['temp']['result'] = null;
     $_SESSION['temp']['roomate'] = null;
     // find input
-    if(mb_strtolower($input_key,'UTF-8') === mb_strtolower($row[0],'UTF-8')) {
+    if(mb_strtolower($name_agency,'UTF-8') === mb_strtolower($row[1],'UTF-8') && mb_strtolower($name_customer,'UTF-8') === mb_strtolower($row[2],'UTF-8')) {
         // save in session temp
         $_SESSION['temp']['result'] = $row;
         // break find input if true
