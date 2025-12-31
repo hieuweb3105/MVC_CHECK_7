@@ -35,11 +35,15 @@
     </div>
 </div>
 
-<div class="col-12 col-md-8 col-lg-4 mt-4 px-2 animate__animated animate__bounceInRight animate__delay-1s">
-    <img class="w-100" src="<?= URL_STORAGE ?>system/map.jpg" alt="map.jpg">
+<div class="col-12 col-md-8 col-lg-4 mt-4" data-aos="fade-up">
+    <img class="w-100" src="<?= URL_STORAGE ?>system/map.png" alt="map.jpg">
 </div>
 
-<div class="text-center">
+<div class="col-12 col-md-8 col-lg-4 mt-4" data-aos="fade-up">
+    <img class="w-100" src="<?= URL_STORAGE ?>system/timeline.png" alt="map.jpg">
+</div>
+
+<div class="text-center" data-aos="fade-up">
     <a id="feedback" href="/feedback" class="btn btn-dark fs-6 px-4 fw-bold btn my-5">
         Đánh giá dịch vụ của chúng tôi
     </a>
