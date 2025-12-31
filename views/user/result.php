@@ -5,7 +5,7 @@
                 Tên đại lý
             </div>
             <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
-                <?= $_SESSION['temp']['result'][0] ?>
+                <?= $_SESSION['temp']['result'][0][0] ?>
             </div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
@@ -13,7 +13,7 @@
                 Tên KH
             </div>
             <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
-                <?= $_SESSION['temp']['result'][2] ?>
+                <?= $_SESSION['temp']['result'][0][1] ?>
             </div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
@@ -21,7 +21,7 @@
                 Vị trí bàn
             </div>
             <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
-                <?= $_SESSION['temp']['result'][3] ?>
+                <?= $_SESSION['temp']['result'][0][2] ?>
             </div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
@@ -29,7 +29,7 @@
                 Số bàn
             </div>
             <div class="fw-info fs-4 text-lg-end text-center text-capitalize">
-                <?= $_SESSION['temp']['result'][4] ?>
+                <?= $_SESSION['temp']['result'][0][3] ?>
             </div>
         </div>
     </div>

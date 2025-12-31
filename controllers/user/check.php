@@ -17,21 +17,14 @@ $name_customer = '';
 
 # [HANDLE]
 
-// get input name agency
-if(isset($_POST['name_agency']) && $_POST['name_agency']) $name_agency = $_POST['name_agency'];
-else {
-    toast_create('danger','Vui lòng nhập Tên Đại Lý của bạn');
-    route();
-}
 // get input name customer
 if(isset($_POST['name_customer']) && $_POST['name_customer']) $name_customer = $_POST['name_customer'];
 else {
-    toast_create('danger','Vui lòng nhập Tên KH của bạn');
+    toast_create('danger','Vui lòng nhập Tên của bạn');
     route();
 }
 
 // save input
-$_SESSION['temp']['name_agency'] = $name_agency;
 $_SESSION['temp']['name_customer'] = $name_customer;
 
 // condition call API : null data OR time query < duration time
@@ -40,7 +33,7 @@ if(empty($_SESSION['data']) || (time() - $_SESSION['temp']['time']) > REQUEST_AP
     // call API get data from GG Sheet
     try {
         // query get
-        $response = $service->spreadsheets_values->get(SHEET_ID, 'Info!A3:E');
+        $response = $service->spreadsheets_values->get(SHEET_ID, 'Info!A3:D');
         
         // get values
         $_SESSION['data'] = $response->getValues(); 
@@ -64,22 +57,25 @@ if(empty($_SESSION['data']) || (time() - $_SESSION['temp']['time']) > REQUEST_AP
     }
 }
 
+
+// reset old temp result
+$_SESSION['temp']['result'] = null;
+
 // handle check
 foreach ($_SESSION['data'] as $row) {
-    // reset old result & roomate
-    $_SESSION['temp']['result'] = null;
-    $_SESSION['temp']['roomate'] = null;
     // find input
-    if(mb_strtolower($name_agency,'UTF-8') === mb_strtolower($row[1],'UTF-8') && mb_strtolower($name_customer,'UTF-8') === mb_strtolower($row[2],'UTF-8')) {
+    if(mb_strtolower($name_customer,'UTF-8') === mb_strtolower($row[1],'UTF-8')) {
         // save in session temp
-        $_SESSION['temp']['result'] = $row;
-        // break find input if true
-        break;
+        $_SESSION['temp']['result'][] = $row;
     }
 }
 
-// route
+// case : no data customer
 if(empty($_SESSION['temp']['result'])) {
     toast_create('danger','Không tìm thấy thông tin của Tên Đại Lý này');
     route();
-}else route('result');
+}
+// case : more than 2 customer
+elseif(count($_SESSION['temp']['result']) > 2) route('choose');
+// case : has data customer
+else route('result');
